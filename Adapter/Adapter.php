@@ -6,7 +6,24 @@ declare(strict_types = 1);
  * Problem:
  * Oft ändernde Klasse
  */
-class PayPal
+class PayPalV1
+{
+    /**
+     * @var int
+     */
+    private $amount = 0;
+
+    public function setPayment(int $amount)
+    {
+        $this->amount = $amount;
+    }
+    public function sendPayment()
+    {
+        echo 'Paying via PayPal: '. $this->amount;
+    }
+}
+
+class PayPalV2
 {
     public function sendPayment(int $amount)
     {
@@ -26,11 +43,11 @@ interface PaymentInterface
 class PaypalAdapter implements PaymentInteface
 {
     /**
-     * @var PayPal
+     * @var PayPalV2
      */
     private $paypal;
 
-    public function __construct(PayPal $paypal)
+    public function __construct(PayPalV2 $paypal)
     {
         $this->paypal = $paypal;
     }
