@@ -13,11 +13,11 @@ class PayPalV1
      */
     private $amount = 0;
 
-    public function setPayment(int $amount)
+    public function setPayment(int $amount): void
     {
         $this->amount = $amount;
     }
-    public function sendPayment()
+    public function sendPayment(): void
     {
         echo 'Paying via PayPal: '. $this->amount;
     }
@@ -25,7 +25,7 @@ class PayPalV1
 
 class PayPalV2
 {
-    public function sendPayment(int $amount)
+    public function sendPayment(int $amount): void
     {
         echo 'Paying via PayPal: '. $amount;
     }
@@ -52,7 +52,7 @@ class PaypalAdapter implements PaymentInteface
         $this->paypal = $paypal;
     }
 
-    public function pay(int $amount)
+    public function pay(int $amount): void
     {
         $this->paypal->sendPayment($amount);
     }
